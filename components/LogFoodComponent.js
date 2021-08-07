@@ -3,6 +3,7 @@ import {
   View,
   StyleSheet,
   SafeAreaView,
+  StatusBar,
   ScrollView,
   Alert,
   Modal,
@@ -29,12 +30,9 @@ class LogFood extends Component {
 
   render() {
     return (
-      <SafeAreaView style={styles.background}>
-        <View>
-          <Card>
-            <Text style={styles.cardText}>Baby Food Tracker</Text>
-          </Card>
-          <Card>
+      <SafeAreaView style={styles.container}>
+        <View style={styles.background}>
+          <Card title="Baby First Foods Tracker">
             <Button
               title="Let's get started"
               onPress={() => this.enterFood()}
@@ -49,15 +47,27 @@ class LogFood extends Component {
         >
           <View>
             <Text style={styles.cardText}>Enter Food Here</Text>
-            <Input></Input>
-            <Button
-              onPress={() => {
-                this.toggleModal();
-                this.resetModal();
-              }}
-              color="#5637DD"
-              title="Close"
-            />
+            <Input placeholder="Food" />
+            <View style={{ margin: 10 }}>
+              <Button
+                onPress={() => {
+                  this.toggleModal();
+                  this.resetModal();
+                }}
+                title="Submit"
+                color="green"
+              />
+            </View>
+            <View style={{ margin: 10 }}>
+              <Button
+                onPress={() => {
+                  this.toggleModal();
+                  this.resetModal();
+                }}
+                title="Close"
+                color="#5637DD"
+              />
+            </View>
           </View>
         </Modal>
       </SafeAreaView>
@@ -66,17 +76,23 @@ class LogFood extends Component {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    marginTop: StatusBar.currentHeight
+  },
   background: {
     backgroundColor: "blue",
     height: "100%",
+    width: "100%",
     alignItems: "center",
     justifyContent: "center"
   },
   cardText: {
+    color: "red",
     fontSize: 32,
     fontWeight: "100",
     justifyContent: "flex-start",
-    margin: 20
+    margin: 10
   },
   modal: {
     justifyContent: "center",
