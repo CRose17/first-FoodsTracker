@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { TextInput } from "react-native";
 import {
   View,
   StyleSheet,
@@ -11,11 +12,13 @@ import {
 } from "react-native";
 import { Card, Text, Input } from "react-native-elements";
 
+const FoodArray = [];
 class LogFood extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showModal: false
+      showModal: false,
+      FoodItem: ""
     };
   }
   toggleModal() {
@@ -27,6 +30,11 @@ class LogFood extends Component {
   resetModal() {
     this.setState({ showModal: false });
   }
+
+  AddFoodToArray = () => {
+    FoodArray.push(this.state.FoodItem.toString());
+    Alert.alert(FoodArray.toString());
+  };
 
   render() {
     return (
@@ -46,15 +54,18 @@ class LogFood extends Component {
           onRequestClose={() => this.toggleModal()}
         >
           <View>
-            <Text style={styles.cardText}>Enter Food Here</Text>
-            <Input placeholder="Food" />
+            <TextInput
+              placeholder="Enter Food Here"
+              onChangeText={(value) => this.setState({ FoodItem: value })}
+              style={{ textAlign: "center", marginBottom: 6, height: 45 }}
+            />
             <View style={{ margin: 10 }}>
               <Button
                 onPress={() => {
+                  this.AddFoodToArray();
                   this.toggleModal();
-                  this.resetModal();
                 }}
-                title="Submit"
+                title="Click here to Add Food"
                 color="green"
               />
             </View>
