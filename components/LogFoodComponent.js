@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { TextInput } from "react-native";
 import {
   View,
   StyleSheet,
@@ -8,11 +7,32 @@ import {
   ScrollView,
   Alert,
   Modal,
-  Button
+  Button,
+  TextInput,
+  Image
 } from "react-native";
 import { Card, Text, Input } from "react-native-elements";
+import { NavigationContainer } from "react-navigation";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 const FoodArray = [];
+
+function HomeScreen() {
+  return (
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <Text>Home!</Text>
+    </View>
+  );
+}
+
+function SettingsScreen() {
+  return (
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <Text>Settings!</Text>
+    </View>
+  );
+}
+
 class LogFood extends Component {
   constructor(props) {
     super(props);
@@ -39,13 +59,13 @@ class LogFood extends Component {
   render() {
     return (
       <SafeAreaView style={styles.container}>
-        <View style={styles.background}>
-          <Card title="Baby First Foods Tracker">
-            <Button
-              title="Let's get started"
-              onPress={() => this.enterFood()}
-            />
-          </Card>
+        <View>
+          <Image source={require("./images/Heartfoods.png")} />
+          <Text h4>Baby First Foods Tracker</Text>
+          <Button title="Log new food" onPress={() => this.enterFood()} />
+        </View>
+        <View style={{ margin: 20 }}>
+          <Button title="What has child already tried?" />
         </View>
         <Modal
           animationType={"slide"}
@@ -85,6 +105,22 @@ class LogFood extends Component {
     );
   }
 }
+
+const Login = createBottomTabNavigator(
+  {
+    Login: LoginTab,
+    Register: RegisterTab
+  },
+  {
+    tabBarOptions: {
+      activeBackgroundColor: "#5637DD",
+      inactiveBackgroundColor: "#CEC8FF",
+      activeTintColor: "#fff",
+      inactiveTintColor: "#808080",
+      labelStyle: { fontSize: 16 }
+    }
+  }
+);
 
 const styles = StyleSheet.create({
   container: {
