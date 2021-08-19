@@ -12,26 +12,10 @@ import {
   Image
 } from "react-native";
 import { Card, Text, Input } from "react-native-elements";
-import { NavigationContainer } from "react-navigation";
+//import { NavigationContainer } from "react-navigation";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 const FoodArray = [];
-
-function HomeScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>Home!</Text>
-    </View>
-  );
-}
-
-function SettingsScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>Settings!</Text>
-    </View>
-  );
-}
 
 class LogFood extends Component {
   constructor(props) {

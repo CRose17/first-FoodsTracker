@@ -7,7 +7,7 @@ class LogFoodScreen extends Component {
   render() {
     return (
       <View>
-        <Text>LogFood Here!</Text>
+        <Text>Log Food Here!</Text>
       </View>
     );
   }
